@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 	$('form').submit(function(e){
 		e.preventDefault();
+		var $searchField = $('#search');
 
 		var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 		var animal = //text from searchbox
