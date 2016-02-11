@@ -1,4 +1,4 @@
-  var container = document.querySelector('#masonry-cards');
+  var container = document.querySelector('#photos');
   var masonry = new Masonry(container, {
     columnWidth: 50,
     itemSelector: '.item'
