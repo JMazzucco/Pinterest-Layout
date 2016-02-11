@@ -1,6 +1,13 @@
 // http://api.flickr.com/services/feeds/photos_public.gne?format=json
 
 $(document).ready(function() {
+	var initMasonry = function(){
+		var container = document.querySelector('#photos');
+	  var masonry = new Masonry(container, {
+	    columnWidth: 50,
+	    itemSelector: '.item'
+	  });
+	};
 
 	$('form').submit(function(e){
 		e.preventDefault();
@@ -14,18 +21,24 @@ $(document).ready(function() {
 		};
 
 		function displayPhotos(data){
-			var photoHTML = '<ul>';
+			var photoHTML = '';
 			$.each (data.items, function(i, photo){
-				photoHTML += '<li">';
-				photoHTML += '<a href="'+ photo.link +' " class="">'
-				photoHTML += '<img src="'+photo.media.m+' "></a></li>';
-				photoHTML += '</ul>';
+				photoHTML += '<div class="item">';
+				photoHTML += '<a href="'+ photo.link +' ">'
+				photoHTML += '<img src="'+photo.media.m+' "></a></div>';
+				photoHTML += '';
 				$('#photos').html(photoHTML);
 			});
+
+			initMasonry();
+
 		};
 
 		$.getJSON(flickrAPI, flickrOptions, displayPhotos);
 
 	});
+
+
+
 
 });
