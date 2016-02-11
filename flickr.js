@@ -13,7 +13,7 @@ $(document).ready(function() {
 			format: "json"
 		};
 
-		var displayPhotos = function(data){
+		function displayPhotos(data){
 			var photoHTML = '<ul>';
 			$.each (data.items, function(i, photo){
 				photoHTML += '<li class="grid-25 tablet-grid-50">';
