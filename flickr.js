@@ -7,17 +7,17 @@ $(document).ready(function() {
 		var $searchField = $('#search');
 
 		var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-		var animal = //text from searchbox
+		var searchWord = $searchField.val();
 		var flickrOptions = {
-			tags: animal,
+			tags: searchWord,
 			format: "json"
 		};
 
 		function displayPhotos(data){
 			var photoHTML = '<ul>';
 			$.each (data.items, function(i, photo){
-				photoHTML += '<li class="grid-25 tablet-grid-50">';
-				photoHTML += '<a href="'+ photo.link +' " class="image">'
+				photoHTML += '<li">';
+				photoHTML += '<a href="'+ photo.link +' " class="">'
 				photoHTML += '<img src="'+photo.media.m+' "></a></li>';
 				photoHTML += '</ul>';
 				$('#photos').html(photoHTML);
@@ -26,6 +26,6 @@ $(document).ready(function() {
 
 		$.getJSON(flickrAPI, flickrOptions, displayPhotos);
 
-	}
+	});
 
 });
