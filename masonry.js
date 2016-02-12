@@ -3,3 +3,9 @@
   //   columnWidth: 50,
   //   itemSelector: '.item'
   // });
+
+  $('#photos').masonry({
+			resize: true,
+ 		    columnWidth: 85,
+		    itemSelector: '.item'
+	  });
