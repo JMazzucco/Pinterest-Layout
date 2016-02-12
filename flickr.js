@@ -13,12 +13,15 @@ $(document).ready(function() {
 
 		function displayPhotos(data){
 			var photoHTML = '';
-			$.each (data.items, function(i, photo){
-				photoHTML += '<div class="item">';
-				photoHTML += '<a href="' + photo.link + '">'
-				photoHTML += '<img src="' + photo.media.m + '"></a></div>';
-				$('#photos').html(photoHTML);
-			});
+
+			if (searchWord){
+				$.each (data.items, function(i, photo){
+					photoHTML += '<div class="item">';
+					photoHTML += '<a href="' + photo.link + '">'
+					photoHTML += '<img src="' + photo.media.m + '"></a></div>';
+					$('#photos').html(photoHTML);
+				});
+
 
 			$('#photos').imagesLoaded()
 		  .done( function( instance ) {
@@ -29,7 +32,7 @@ $(document).ready(function() {
 			    itemSelector: '.item'
 			  });
 		  });
-
+		 }
 		};
 
 		$.getJSON(flickrAPI, flickrOptions, displayPhotos);
