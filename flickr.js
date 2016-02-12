@@ -1,7 +1,4 @@
-// http://api.flickr.com/services/feeds/photos_public.gne?format=json
-
 $(document).ready(function() {
-
 
 	$('form').submit(function(e){
 		e.preventDefault();
@@ -14,7 +11,6 @@ $(document).ready(function() {
 			format: "json"
 		};
 
-
 		function displayPhotos(data){
 			var photoHTML = '';
 			$.each (data.items, function(i, photo){
@@ -24,17 +20,20 @@ $(document).ready(function() {
 				$('#photos').html(photoHTML);
 			});
 
+			$('#photos').imagesLoaded()
+		  .done( function( instance ) {
+		    // all images successfully loaded
+			  var container = document.querySelector('#photos');
+			  var masonry = new Masonry(container, {
+			    columnWidth: 50,
+			    itemSelector: '.item'
+			  });
+		  });
+
 		};
 
 		$.getJSON(flickrAPI, flickrOptions, displayPhotos);
 
 	});
-
-
-$('#photos').masonry({
-			resize: true,
- 		    columnWidth: 85,
-		    itemSelector: '.item'
-	  });
 
 });
