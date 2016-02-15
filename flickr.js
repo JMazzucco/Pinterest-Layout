@@ -20,8 +20,7 @@ $(document).ready(function() {
 					photoHTML += '<div class="item">';
 					photoHTML += '<img src="' + photo.media.m + '">';
 					photoHTML += '<div class="overlay">';
-					photoHTML += '<h5>Title: '+ photo.title +'</h5>'
-					photoHTML += '<h6>Date: '+ photo.date_taken +'</h6>'
+					photoHTML += '<h6>Taken on '+ photo.date_taken +'</h6>'
 					photoHTML += '<a href="' + photo.link + '">Take a look</a>';
 					photoHTML += '</div></div>';
 					$('#photos').html(photoHTML);
