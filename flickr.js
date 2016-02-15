@@ -16,12 +16,16 @@ $(document).ready(function() {
 
 			if (searchWord){
 				$.each (data.items, function(i, photo){
+					console.log(photo);
 					photoHTML += '<div class="item">';
-					photoHTML += '<a href="' + photo.link + '">'
-					photoHTML += '<img src="' + photo.media.m + '"></a></div>';
+					photoHTML += '<img src="' + photo.media.m + '">';
+					photoHTML += '<div class="overlay">';
+					photoHTML += '<h5>Title: '+ photo.title +'</h5>'
+					photoHTML += '<h6>Date: '+ photo.date_taken +'</h6>'
+					photoHTML += '<a href="' + photo.link + '">Take a look</a>';
+					photoHTML += '</div></div>';
 					$('#photos').html(photoHTML);
 				});
-
 
 			$('#photos').imagesLoaded()
 		  .done( function( instance ) {
