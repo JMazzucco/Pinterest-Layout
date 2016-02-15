@@ -15,18 +15,16 @@ $(document).ready(function() {
 			var photoHTML = '';
 			var increment = 1;
 
-			function resizeItem(currentImg) {
+			function resizeItem(imageID) {
 			  $('.item').css({
 			  	 width: $(currentImg).width(),
    				 height: $(currentImg).height()
 			  });
-
-			  console.log("ran");
 			};
 
 			if (searchWord){
 				$.each (data.items, function(i, photo){
-					photoHTML += '<div class="item">';
+					photoHTML += '<div id="item-' + increment +'" class="item">';
 					photoHTML += '<img id="image-' + increment +'" src="' + photo.media.m + '">';
 					photoHTML += '<div class="overlay">';
 					photoHTML += '<h6>Taken on '+ photo.date_taken +'</h6>'
@@ -35,8 +33,10 @@ $(document).ready(function() {
 					$('#photos').html(photoHTML);
 
 					increment ++;
+
 					var currentImg = $(".item").find("img");
-					currentImg.on("load", resizeItem(currentImg))
+					var imageID = currentImg.attr('id');
+					currentImg.on("load", resizeItem(imageID));
 				});
 
 			$('#photos').imagesLoaded()
