@@ -37,7 +37,6 @@ header {
 	-webkit-appearance: none;
 }
 
-
 .flex-form input[type="submit"] {
   background:#FF5A5F;
   border-top: 1px solid #FF5A5F;
@@ -62,6 +61,7 @@ header {
 
 .item {
 	display: inline-block;
+	position: relative;
 	text-align: center;
 	margin: 5px;
 	background: #fff;
@@ -69,8 +69,11 @@ header {
   box-shadow: 0 0.125rem 0.3125rem 0 rgba(0, 0, 0, 0.25);
 }
 
-img {
-	vertical-align: bottom
+img, .overlay {
+	vertical-align: bottom;
+	position: absolute;
+	top: 0;
+	left: 0
 }
 
 #photos {

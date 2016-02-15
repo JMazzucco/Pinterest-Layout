@@ -13,17 +13,30 @@ $(document).ready(function() {
 
 		function displayPhotos(data){
 			var photoHTML = '';
+			var increment = 1;
+
+			function resizeItem(currentImg) {
+			  $('.item').css({
+			  	 width: $(currentImg).width(),
+   				 height: $(currentImg).height()
+			  });
+
+			  console.log("ran");
+			};
 
 			if (searchWord){
 				$.each (data.items, function(i, photo){
-					console.log(photo);
 					photoHTML += '<div class="item">';
-					photoHTML += '<img src="' + photo.media.m + '">';
+					photoHTML += '<img id="image-' + increment +'" src="' + photo.media.m + '">';
 					photoHTML += '<div class="overlay">';
 					photoHTML += '<h6>Taken on '+ photo.date_taken +'</h6>'
 					photoHTML += '<a href="' + photo.link + '">Take a look</a>';
 					photoHTML += '</div></div>';
 					$('#photos').html(photoHTML);
+
+					increment ++;
+					var currentImg = $(".item").find("img");
+					currentImg.on("load", resizeItem(currentImg))
 				});
 
 			$('#photos').imagesLoaded()
