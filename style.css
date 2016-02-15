@@ -76,11 +76,25 @@ img, .overlay {
 	left: 0
 }
 
+
 .overlay {
 	height: 100%;
 	width: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 10;
+	opacity: 0;
+	transition: opacity .2s ease-in-out;
 }
 
+.overlay:hover {
+  zoom: 1;
+  filter: alpha(opacity=50);
+  opacity: 1;
+}
+
+.overlay h6 {
+	padding: 10px;
+}
 
 #photos {
 	background-color: white;
