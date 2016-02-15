@@ -76,6 +76,12 @@ img, .overlay {
 	left: 0
 }
 
+.overlay {
+	height: 100%;
+	width: 100%;
+}
+
+
 #photos {
 	background-color: white;
 }
