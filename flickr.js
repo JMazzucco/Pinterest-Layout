@@ -13,35 +13,36 @@ $(document).ready(function() {
 
 		function displayPhotos(data){
 			var photoHTML = '';
-			var increment = 1;
-
-			function resizeItem(imageID) {
-			  $('.item').css({
-			  	 width: $(currentImg).width(),
-   				 height: $(currentImg).height()
-			  });
-			};
+			var itemID;
+			var imageID;
 
 			if (searchWord){
 				$.each (data.items, function(i, photo){
-					photoHTML += '<div id="item-' + increment +'" class="item">';
-					photoHTML += '<img id="image-' + increment +'" src="' + photo.media.m + '">';
+					imageID = "image-" + i;
+					itemID = "item-" + i;
+
+					photoHTML += '<div id="'+itemID+'" class="item">';
+					photoHTML += '<img id="'+imageID+'" src="' + photo.media.m + '">';
+					photoHTML += '<a href="' + photo.link + '">';
 					photoHTML += '<div class="overlay">';
 					photoHTML += '<h6>Taken on '+ photo.date_taken +'</h6>'
-					photoHTML += '<a href="' + photo.link + '">Take a look</a>';
-					photoHTML += '</div></div>';
+					photoHTML += '</div></a></div>';
 					$('#photos').html(photoHTML);
 
-					increment ++;
-
-					var currentImg = $(".item").find("img");
-					var imageID = currentImg.attr('id');
-					currentImg.on("load", resizeItem(imageID));
 				});
 
 			$('#photos').imagesLoaded()
 		  .done( function( instance ) {
-		    // all images successfully loaded
+
+		  	var items_array = $('#photos').children();
+		  	$.each (items_array, function(i, item){
+		  		$(item).css({
+				  		 width: $('#image-' + i).width(),
+	   					 height: $('#image-' + i).height()
+				  });
+		  	});
+
+
 			  var container = document.querySelector('#photos');
 			  var masonry = new Masonry(container, {
 			    columnWidth: 50,
